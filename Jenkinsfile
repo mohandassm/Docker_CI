@@ -17,7 +17,7 @@ pipeline {
            steps {
              
                 //sh 'cd C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Docker_CI'
-                sh 'mvn -f C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Docker_CI\pom.xml clean package'             
+                sh 'mvn clean package'             
           }
         }
         
