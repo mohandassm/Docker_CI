@@ -40,10 +40,15 @@ pipeline {
         //  sh  'docker push mohan/samplewebapp:$BUILD_NUMBER' 
        // }
 		    
-	withDockerRegistry(credentialsId: 'Dockerhub', url: 'https://hub.docker.com/repository/docker/mohandocker226/samplewebapp') 
-		    {
-			    sh  'docker push mohandocker226/samplewebapp:latest'
+	//withDockerRegistry(credentialsId: 'Dockerhub', url: 'https://hub.docker.com/repository/docker/mohandocker226/samplewebapp') 
+		//    {
+			//    sh  'docker push mohandocker226/samplewebapp:latest'
     // some block
+	withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhub')]) {
+    // some block
+	 sh "docker login -u mohandocker226 -p ${dockerhub}"
+       }    
+	 sh "docker push mohandocker226/samplewebapp:latest"
              }		   
           }
         }
