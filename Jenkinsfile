@@ -34,10 +34,14 @@ pipeline {
   stage('Publish image to Docker Hub') {
           
             steps {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-          sh  'docker push mohan/samplewebapp:latest'
+        //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+         // sh  'docker push mohan/samplewebapp:latest'
         //  sh  'docker push mohan/samplewebapp:$BUILD_NUMBER' 
-        }
+       // }
+	withDockerRegistry(credentialsId: 'Dockerhub', url: 'https://hub.docker.com/') {
+	sh  'docker push mohan/samplewebapp:latest'
+    // some block
+}
                   
           }
         }
