@@ -15,12 +15,9 @@ pipeline {
         }
 	 stage('Execute Maven') {
            steps {
-             withMaven(jdk: 'JAVA', maven: 'Maven') {
-    		// some block
-		     sh 'mvn clean package'
-		}
-                //sh 'cd C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Docker_CI'
-                             
+                  sh 'mvn clean package'
+		
+                //sh 'cd C:\Windows\System32\config\systemprofile\AppData\Local\Jenkins\.jenkins\workspace\Docker_CI'                           
           }
         }
         
