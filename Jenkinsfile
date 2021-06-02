@@ -40,7 +40,7 @@ pipeline {
         //  sh  'docker push mohan/samplewebapp:$BUILD_NUMBER' 
        // }
 		    
-	withDockerRegistry(credentialsId: 'Dockerhub', toolName: 'Docker-Local', url: 'https://hub.docker.com/repository/docker/mohandocker226/samplewebapp') 
+	withDockerRegistry(credentialsId: 'Dockerhub', url: 'https://hub.docker.com/repository/docker/mohandocker226/samplewebapp') 
 		    {
 			    sh  'docker push mohandocker226/samplewebapp:latest'
     // some block
