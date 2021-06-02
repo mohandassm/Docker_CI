@@ -26,8 +26,8 @@ pipeline {
            steps {
               
                 sh 'docker build -t samplewebapp:latest .' 
-                sh 'docker tag samplewebapp mohan/samplewebapp:latest'
-                //sh 'docker tag samplewebapp mohan/samplewebapp:$BUILD_NUMBER'
+                sh 'docker tag samplewebapp mohandocker226/samplewebapp:latest'
+                //sh 'docker tag samplewebapp mohandocker226/samplewebapp:$BUILD_NUMBER'
                
           }
         }
@@ -40,7 +40,7 @@ pipeline {
         //  sh  'docker push mohan/samplewebapp:$BUILD_NUMBER' 
        // }
 	withDockerRegistry(credentialsId: 'Dockerhub', url: 'https://hub.docker.com/') {
-	sh  'docker push mohan/samplewebapp:latest'
+	sh  'docker push mohandocker226/samplewebapp:latest'
     // some block
 }
                   
@@ -51,14 +51,14 @@ pipeline {
              
             steps 
 			{
-                sh "docker run -d -p 8003:8080 mohan/samplewebapp"
+                sh "docker run -d -p 8003:8080 mohandocker226/samplewebapp"
  
             }
         }
  stage('Run Docker container on remote hosts') {
              
             steps {
-                sh "docker -H ssh://jenkins@172.31.28.25 run -d -p 8003:8080 mohan/samplewebapp"
+                sh "docker -H ssh://jenkins@172.31.28.25 run -d -p 8003:8080 mohandocker226/samplewebapp"
  
             }
         }
